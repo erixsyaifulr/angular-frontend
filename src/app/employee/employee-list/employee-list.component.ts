@@ -32,7 +32,7 @@ export class EmployeeListComponent implements OnInit {
 
   logout(){
     localStorage.removeItem('token');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/landing']);
   }
 
   reloadData(): void {

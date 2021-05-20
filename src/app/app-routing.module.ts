@@ -9,9 +9,11 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {AuthGuard} from './auth.guard';
+import { LandingpageComponent } from './landingpage/landingpage.component';
  
 const routes: Routes = [
-  { path: '', redirectTo: 'employees', pathMatch: 'full' },
+  { path: '', redirectTo: 'landing', pathMatch: 'full' },
+  { path: 'landing', component: LandingpageComponent },
   { path: 'employees', component: EmployeeListComponent,
     canActivate: [AuthGuard]
   },

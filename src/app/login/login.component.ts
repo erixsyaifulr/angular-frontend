@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   form : FormGroup;
   data:any;
   token:any;
+  gettoken:any;
 
   constructor(private formBuilder: FormBuilder,private toastr: ToastrService, private dataService : DataService,
     private router :Router) { }
@@ -26,7 +27,13 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loginForm();
+   
+    this.gettoken = localStorage.getItem('token');
+    if(this.gettoken!=null){
+      this.router.navigate(['/employees']);
+    }else{
+      this.loginForm();
+    }
   }
 
   get f(){
@@ -45,7 +52,7 @@ export class LoginComponent implements OnInit {
       //  console.log(res);
           this.token = this.data.data.token;
           localStorage.setItem('token', this.token);
-          this.router.navigate(['/']);
+          this.router.navigate(['/employees']);
           this.toastr.success(JSON.stringify(this.data.message), JSON.stringify(this.data.code), {
             timeOut:4000,
             progressBar:true

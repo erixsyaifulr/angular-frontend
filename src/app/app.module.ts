@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { LandingpageComponent } from './landingpage/landingpage.component';
 
 
 
@@ -35,7 +36,8 @@ import { RegisterComponent } from './register/register.component';
     SalaryListComponent,
     SalaryDetailComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    LandingpageComponent
   ],
   imports: [
     BrowserModule,
