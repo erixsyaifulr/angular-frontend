@@ -4,14 +4,22 @@ import { EmployeeListComponent } from './employee/employee-list/employee-list.co
 import { CreateEmployeeComponent } from './employee/create-employee/create-employee.component';
 import { UpdateEmployeeComponent } from './employee/update-employee/update-employee.component';
 import { EmployeeDetailComponent } from './employee/employee-detail/employee-detail.component';
- 
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {AuthGuard} from './auth.guard';
  
 const routes: Routes = [
   { path: '', redirectTo: 'employees', pathMatch: 'full' },
-  { path: 'employees', component: EmployeeListComponent },
+  { path: 'employees', component: EmployeeListComponent,
+    canActivate: [AuthGuard]
+  },
   { path: 'add', component: CreateEmployeeComponent },
   { path: 'update/:id', component: UpdateEmployeeComponent },
   { path: 'details/:id', component: EmployeeDetailComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
 ];
  
 @NgModule({

@@ -5,6 +5,8 @@ import { EmployeeService } from '../employee.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
+import jwt_decode from 'jwt-decode';
+
 
 @Component({
   selector: 'app-employee-list',
@@ -13,12 +15,24 @@ import Swal from 'sweetalert2';
 })
 export class EmployeeListComponent implements OnInit {
   employees: Employee[];
+  token : any;
+  userData:any;
+  email:any;
 
   constructor(private employeeService: EmployeeService,
     private router: Router) { }
 
   ngOnInit(): void {
     this.reloadData();
+    this.token = localStorage.getItem('token');
+    this.userData = jwt_decode(this.token);
+    this.email = this.userData.semail;
+    
+  }
+
+  logout(){
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 
   reloadData(): void {
