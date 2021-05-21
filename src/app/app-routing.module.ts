@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {AuthGuard} from './auth.guard';
 import { LandingpageComponent } from './landingpage/landingpage.component';
+import { SikelComponent } from './sikel/sikel.component';
  
 const routes: Routes = [
   { path: '', redirectTo: 'landing', pathMatch: 'full' },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'details/:id', component: EmployeeDetailComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'sikel', component: SikelComponent },
 ];
  
 @NgModule({

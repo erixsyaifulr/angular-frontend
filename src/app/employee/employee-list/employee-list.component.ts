@@ -18,6 +18,10 @@ export class EmployeeListComponent implements OnInit {
   token : any;
   userData:any;
   email:any;
+  page :any = 1;
+  limit : any = 5;
+  skip:any;
+  totalCount:any;
 
   constructor(private employeeService: EmployeeService,
     private router: Router) { }
@@ -36,9 +40,24 @@ export class EmployeeListComponent implements OnInit {
   }
 
   reloadData(): void {
-    this.employeeService.getEmployees()
-      .subscribe((response) => {
-        this.employees = response;
+    if(this.page == 1){
+      this.skip=0;
+    }
+    else{
+      this.skip=(this.page - 1) * this.limit;
+    }
+
+    var requestObj = {
+      'limit' : this.limit,
+      'skip' : this.skip
+    }
+
+    // console.log(requestObj);
+
+    this.employeeService.getEmployees(requestObj)
+      .subscribe((response:any) => {
+        this.employees = response.data;
+        this.totalCount = response.totalRecord;
       });
   }
 

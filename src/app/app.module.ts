@@ -21,7 +21,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
-
+import { SikelComponent } from './sikel/sikel.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -37,7 +38,10 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
     SalaryDetailComponent,
     LoginComponent,
     RegisterComponent,
-    LandingpageComponent
+    LandingpageComponent,
+    SikelComponent,
+    
+   
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,9 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
     ToastModule.forRoot(),
     BrowserAnimationsModule,
 	  ToastrModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
