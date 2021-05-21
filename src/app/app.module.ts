@@ -23,6 +23,7 @@ import { RegisterComponent } from './register/register.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { SikelComponent } from './sikel/sikel.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     BrowserAnimationsModule,
 	  ToastrModule.forRoot(),
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    ImageCropperModule
     
   ],
   providers: [],

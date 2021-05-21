@@ -22,6 +22,9 @@ export class EmployeeListComponent implements OnInit {
   limit : any = 5;
   skip:any;
   totalCount:any;
+  first_name:any;
+  selectedValue: any;
+  searchValue: any = null;
 
   constructor(private employeeService: EmployeeService,
     private router: Router) { }
@@ -32,6 +35,37 @@ export class EmployeeListComponent implements OnInit {
     this.userData = jwt_decode(this.token);
     this.email = this.userData.semail;
     
+  }
+
+  search($event){
+    if(this.first_name == ""){
+      this.ngOnInit();
+    }else{
+      if(this.page == 1){
+        this.skip=0;
+      }
+      else{
+        this.skip=(this.page - 1) * this.limit;
+      }
+  
+      var requestObj = {
+        'limit' : this.limit,
+        'skip' : this.skip,
+        'name' :this.searchValue
+      }
+  
+      this.employeeService.getsearch(requestObj)
+        .subscribe((response:any) => {
+          this.employees = response.data;
+          this.totalCount = response.totalRecord;
+        });
+    }
+  }
+
+  changelimit($event){
+    this.selectedValue = $event.target.options[$event.target.options.selectedIndex].text;
+    this.limit = this.selectedValue;
+    this.reloadData();
   }
 
   logout(){

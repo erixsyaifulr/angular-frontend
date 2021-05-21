@@ -34,14 +34,36 @@
 
   <div class="panel-body mt-5">
    
-      <div class="float_right">
+      <!-- <div class="float_right">
         <form>
           <div class="form-group">
             <input type="text" name="search" placeholder="Masukkan nama...">
             <input type="button" class="btn btn-primary btn-xs" value="Cari">
           </div>
         </form>
-      </div>
+      </div> -->
+
+    <div class="container">
+      <table>
+        <tr>
+          <td>
+            <div class="form-group">
+              <select class="form-control" (change)="changelimit($event)">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+              </select>
+            </div>
+          </td>
+          <td>
+            <input type="text" class="form-control" (keyup)="search($event)" 
+            [(ngModel)]="searchValue" name="searchValue" placeholder="Masukkan nama ...." >
+          </td>
+        </tr>
+      </table>
+     
+    </div>
 
     <table class="table table-striped">
       <thead>
@@ -58,13 +80,13 @@
           <td>{{employee.last_name}}</td>
           <td>{{employee.email}}</td>
           <td class="text-center">
-              <button (click)="confirmBox(employee.id)" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
-              <button (click)="updateEmployee(employee.id)" class="btn btn-primary" style="margin-left: 10px"><i class="fa fa-edit"></i> Update</button>
-              <button (click)="employeeDetails(employee.id)" class="btn btn-info" style="margin-left: 10px"><i class="fa fa-info-circle"></i> Details</button>
+              <button (click)="confirmBox(employee.id)" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Delete</button>
+              <button (click)="updateEmployee(employee.id)" class="btn btn-xs btn-primary" style="margin-left: 10px"><i class="fa fa-edit"></i> Update</button>
+              <button (click)="employeeDetails(employee.id)" class="btn btn-xs btn-info" style="margin-left: 10px"><i class="fa fa-info-circle"></i> Details</button>
           </td>
         </tr>
       </tbody>
-      <ngb-pagination [collectionSize]="totalCount" [pageSize]="limit" [(page)]="page" aria-label="Default pagination" (pageChange)="reloadData()"></ngb-pagination>
+      <ngb-pagination [collectionSize]="totalCount" [pageSize]="limit" [(page)]="page" aria-label="Default pagination" (pageChange)="reloadData()" [boundaryLinks]="true"></ngb-pagination>
     </table>
   </div>
 
